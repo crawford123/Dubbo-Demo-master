@@ -28,7 +28,7 @@ public class GrettingServiceAsyncImpl implements GrettingServiceAsync {
 		RpcContext context = RpcContext.getContext();
 
 		return CompletableFuture.supplyAsync(() -> {
-			try {
+				try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

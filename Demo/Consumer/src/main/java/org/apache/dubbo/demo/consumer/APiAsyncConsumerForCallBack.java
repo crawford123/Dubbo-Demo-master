@@ -16,7 +16,7 @@ public class APiAsyncConsumerForCallBack {
 		// 1.创建引用实例，并设置属性
 		ReferenceConfig<GreetingService> referenceConfig = new ReferenceConfig<GreetingService>();
 		referenceConfig.setApplication(new ApplicationConfig("first-dubbo-consumer"));
-		referenceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		referenceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 		referenceConfig.setInterface(GreetingService.class);
 		referenceConfig.setTimeout(5000);
 		referenceConfig.setVersion("1.0.0");
@@ -27,13 +27,16 @@ public class APiAsyncConsumerForCallBack {
 
 		// 3. 直接返回null
 		GreetingService greetingService = referenceConfig.get();
-		System.out.println(greetingService.sayHello("world"));
+//		System.out.println(greetingService.sayHello("world"));
+		//result:null
+		System.out.println("result:" + greetingService.sayHello("world"));
 
 		// 4.异步执行回调
 		((FutureAdapter) RpcContext.getContext().getFuture()).getFuture().setCallback(new ResponseCallback() {
 
 			@Override
 			public void done(Object response) {
+				//result:RpcResult [result=Hello world null, exception=null]
 				System.out.println("result:" + response);
 			}
 

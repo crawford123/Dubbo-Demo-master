@@ -40,4 +40,10 @@ public class GrettingServiceAsyncContextImpl implements GrettingServiceRpcContex
 
 		return null;
 	}
+
+	public static void main(String[] args) {
+
+		GrettingServiceAsyncContextImpl grettingServiceAsyncContext = new GrettingServiceAsyncContextImpl();
+		System.out.println("result:" + grettingServiceAsyncContext.sayHello("World"));
+	}
 }

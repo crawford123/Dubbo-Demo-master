@@ -17,7 +17,7 @@ public class ApiProviderForAsync {
 		// 1.创建服务发布实例，并设置
 		ServiceConfig<GrettingServiceAsync> serviceConfig = new ServiceConfig<GrettingServiceAsync>();
 		serviceConfig.setApplication(new ApplicationConfig("first-dubbo-provider"));
-		serviceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		serviceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 		serviceConfig.setInterface(GrettingServiceAsync.class);
 		serviceConfig.setRef(new GrettingServiceAsyncImpl());
 		serviceConfig.setVersion("1.0.0");

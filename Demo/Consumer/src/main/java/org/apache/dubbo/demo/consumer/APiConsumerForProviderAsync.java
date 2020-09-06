@@ -15,7 +15,7 @@ public class APiConsumerForProviderAsync {
 		//1.创建服务引用实例，并设置
 		ReferenceConfig<GrettingServiceAsync> referenceConfig = new ReferenceConfig<GrettingServiceAsync>();
 		referenceConfig.setApplication(new ApplicationConfig("first-dubbo-consumer"));
-		referenceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		referenceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 		referenceConfig.setInterface(GrettingServiceAsync.class);
 		referenceConfig.setTimeout(5000);
 		//referenceConfig.setCluster("myCluster");

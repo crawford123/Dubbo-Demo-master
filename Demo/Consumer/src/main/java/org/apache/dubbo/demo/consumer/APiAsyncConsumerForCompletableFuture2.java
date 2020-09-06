@@ -15,7 +15,7 @@ public class APiAsyncConsumerForCompletableFuture2 {
 		// 1.创建服务引用对象，并设置数据
 		ReferenceConfig<GreetingService> referenceConfig = new ReferenceConfig<GreetingService>();
 		referenceConfig.setApplication(new ApplicationConfig("first-dubbo-consumer"));
-		referenceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		referenceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 		referenceConfig.setInterface(GreetingService.class);
 		referenceConfig.setTimeout(30000);
 		referenceConfig.setVersion("1.0.0");
@@ -26,7 +26,9 @@ public class APiAsyncConsumerForCompletableFuture2 {
 
 		// 3. 直接返回null
 		GreetingService greetingService = referenceConfig.get();
-		System.out.println(greetingService.sayHello("world"));
+//		System.out.println(greetingService.sayHello("world"));
+		//result:null
+		System.out.println("result:" + greetingService.sayHello("world"));
 
 		// 4.异步执行回调
 		CompletableFuture<String> future = RpcContext.getContext().getCompletableFuture();
@@ -34,7 +36,8 @@ public class APiAsyncConsumerForCompletableFuture2 {
 			if (t != null) {
 				t.printStackTrace();
 			} else {
-				System.out.println(v);
+				//result:Hello world null
+				System.out.println("result:" + v);
 			}
 
 		});

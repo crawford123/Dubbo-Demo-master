@@ -14,7 +14,7 @@ public class APiAsyncConsumer {
 		//1.创建引用实例，并设置属性
 		ReferenceConfig<GreetingService> referenceConfig = new ReferenceConfig<GreetingService>();
 		referenceConfig.setApplication(new ApplicationConfig("first-dubbo-consumer"));
-		referenceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		referenceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 		referenceConfig.setInterface(GreetingService.class);
 		referenceConfig.setVersion("1.0.0");
 		referenceConfig.setGroup("dubbo");
@@ -24,11 +24,13 @@ public class APiAsyncConsumer {
 
 		//3. 直接返回null
 		GreetingService greetingService = referenceConfig.get();
-		System.out.println(greetingService.sayHello("world"));
+//		System.out.println(greetingService.sayHello("world"));
+		System.out.printf("result:{}", greetingService.sayHello("world"));
 
 		//4.等待结果
 		java.util.concurrent.Future<String> future = RpcContext.getContext().getFuture();
-		System.out.println(future.get());
+//		System.out.println(future.get());
+		System.out.printf("future result:{}", future.get());
 
 	}
 }
