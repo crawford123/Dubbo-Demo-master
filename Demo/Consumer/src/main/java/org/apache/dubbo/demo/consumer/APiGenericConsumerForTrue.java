@@ -37,7 +37,8 @@ public class APiGenericConsumerForTrue {
 		Object result = greetingService.$invoke("sayHello", new String[] { "java.lang.String" },
 				new Object[] { "world" });
 
-		System.out.println(JSON.json(result));
+		//result1:"Hello world null"
+		System.out.println("result1:" + JSON.json(result));
 
 		// 5. POJO参数转换为map
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -48,6 +49,7 @@ public class APiGenericConsumerForTrue {
 		// 6.发起泛型调用
 		result = greetingService.$invoke("testGeneric", new String[] { "com.books.dubbo.demo.api.PoJo" },
 				new Object[] { map });
-		System.out.println((result));
+		//result2:{msg=null, data={"name":"jiaduo","id":"1990"}, sucess=true, class=com.books.dubbo.demo.api.Result}
+		System.out.println("result2:" + result);
 	}
 }

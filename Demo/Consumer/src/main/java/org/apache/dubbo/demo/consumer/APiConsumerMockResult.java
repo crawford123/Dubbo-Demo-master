@@ -23,20 +23,20 @@ public class APiConsumerMockResult {
 		RegistryFactory registryFactory = ExtensionLoader.getExtensionLoader(RegistryFactory.class)
 				.getAdaptiveExtension();
 		// (2)根据zk地址，获取具体的zk注册中心的客户端实例
-		Registry registry2 = registryFactory.getRegistry(URL.valueOf("zookeeper://127.0.0.1:2181"));
+		Registry registry2 = registryFactory.getRegistry(URL.valueOf("zookeeper://134.175.107.205:2181"));
 
 		// directory.subscribe(subscribeUrl.addParameter(CATEGORY_KEY,
 		// PROVIDERS_CATEGORY + "," + CONFIGURATORS_CATEGORY + "," + ROUTERS_CATEGORY));
 
 		// (3)注册降级方案到zk
-		registry2.register(URL.valueOf(
+		/*registry2.register(URL.valueOf(
 				"override://0.0.0.0/com.books.dubbo.demo.api.GreetingService?category=configurators&dynamic=false&application=first-dubbo-consumer&"
-						+ "mock=" + type + ":return+null&group=dubbo&version=1.0.0"));
+						+ "mock=" + type + ":return+null&group=dubbo&version=1.0.0"));*/
 
 		//(4)取消配置
-//		registry2.unregister(URL.valueOf(
-//				"override://0.0.0.0/com.books.dubbo.demo.api.GreetingService?category=configurators&dynamic=false&application=first-dubbo-consumer&"
-//						+ "mock=" + type + ":return+null&group=dubbo&version=1.0.0"));
+		registry2.unregister(URL.valueOf(
+				"override://0.0.0.0/com.books.dubbo.demo.api.GreetingService?category=configurators&dynamic=false&application=first-dubbo-consumer&"
+						+ "mock=" + type + ":return+null&group=dubbo&version=1.0.0"));
 	}
 
 	public static void main(String[] args) throws InterruptedException {

@@ -22,7 +22,7 @@ public class APiGenericConsumerForNativeJava {
 		// 1.泛型参数固定为GenericService
 		ReferenceConfig<GenericService> referenceConfig = new ReferenceConfig<GenericService>();
 		referenceConfig.setApplication(new ApplicationConfig("first-dubbo-consumer"));
-		referenceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		referenceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 
 		referenceConfig.setVersion("1.0.0");
 		referenceConfig.setGroup("dubbo");
@@ -44,7 +44,8 @@ public class APiGenericConsumerForNativeJava {
 
 		// 5.打印结果，需要把二进制结果使用Java反序列为对象
 		UnsafeByteArrayInputStream in = new UnsafeByteArrayInputStream((byte[]) result);
-		System.out.println(ExtensionLoader.getExtensionLoader(Serialization.class)
+		//result:Hello world null
+		System.out.println("result:" + ExtensionLoader.getExtensionLoader(Serialization.class)
 				.getExtension(Constants.GENERIC_SERIALIZATION_NATIVE_JAVA).deserialize(null, in).readObject());
 
 	}

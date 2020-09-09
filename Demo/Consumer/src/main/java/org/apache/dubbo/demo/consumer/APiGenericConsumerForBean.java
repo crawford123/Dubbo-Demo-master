@@ -23,7 +23,7 @@ public class APiGenericConsumerForBean {
 		// 1.泛型参数固定为GenericService
 		ReferenceConfig<GenericService> referenceConfig = new ReferenceConfig<GenericService>();
 		referenceConfig.setApplication(new ApplicationConfig("first-dubbo-consumer"));
-		referenceConfig.setRegistry(new RegistryConfig("zookeeper://127.0.0.1:2181"));
+		referenceConfig.setRegistry(new RegistryConfig("zookeeper://134.175.107.205:2181"));
 
 		referenceConfig.setVersion("1.0.0");
 		referenceConfig.setGroup("dubbo");
@@ -42,7 +42,8 @@ public class APiGenericConsumerForBean {
 
 		// 5.结果反序列化
 		result = JavaBeanSerializeUtil.deserialize((JavaBeanDescriptor) result);
-		System.out.println(result);
+		//result:Hello world null
+		System.out.println("result:" + result);
 
 	}
 }
